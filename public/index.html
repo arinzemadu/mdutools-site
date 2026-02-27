@@ -10,20 +10,21 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #050816;
-      --accent: #ffb347;
-      --accent-strong: #ff7a3c;
-      --text-main: #f9fafb;
-      --text-muted: #9ca3af;
-      --card-bg: #101223;
-      --border: #1f2937;
-      --radius: 18px;
+      --bg: #0f172a;
+      --accent: #3b82f6;
+      --accent-creative: #8b5cf6;
+      --accent-strong: #2563eb;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --card-bg: #1e293b;
+      --border: #334155;
+      --radius: 16px;
     }
     * { box-sizing: border-box; }
     body {
       margin: 0;
       font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top left, #1f2937 0, #050816 45%, #020617 100%);
+      background: radial-gradient(circle at top left, #1e293b 0, #0f172a 45%, #020617 100%);
       color: var(--text-main);
     }
     a { color: inherit; text-decoration: none; }
@@ -36,8 +37,8 @@
       position: sticky;
       top: 0;
       backdrop-filter: blur(16px);
-      background: rgba(5, 8, 22, 0.92);
-      border-bottom: 1px solid #111827;
+      background: rgba(15, 23, 42, 0.92);
+      border-bottom: 1px solid var(--border);
       z-index: 10;
     }
     .nav {
@@ -57,9 +58,9 @@
     .logo-badge {
       width: 32px;
       height: 32px;
-      border-radius: 40% 60% 55% 45%;
-      background: radial-gradient(circle at 30% 30%, #fff6e6 0, #ffb347 30%, #ff7a3c 80%);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.5);
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-creative) 100%);
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
     }
     .logo-title {
       font-weight: 700;
@@ -75,7 +76,7 @@
     }
     .nav-links {
       display: flex;
-      gap: 1rem;
+      gap: 1.5rem;
       font-size: 0.85rem;
       align-items: center;
     }
@@ -83,6 +84,7 @@
       color: var(--text-muted);
       position: relative;
       padding-bottom: 0.15rem;
+      font-weight: 500;
     }
     .nav-link::after {
       content: "";
@@ -92,7 +94,7 @@
       width: 0;
       height: 2px;
       border-radius: 999px;
-      background: linear-gradient(90deg, var(--accent), var(--accent-strong));
+      background: linear-gradient(90deg, var(--accent), var(--accent-creative));
       transition: width 0.18s ease-out;
     }
     .nav-link:hover {
@@ -104,19 +106,20 @@
     .btn-nav {
       border-radius: 999px;
       border: none;
-      padding: 0.45rem 0.95rem;
+      padding: 0.5rem 1.25rem;
       background: linear-gradient(90deg, var(--accent), var(--accent-strong));
-      color: #111827;
+      color: white;
       font-size: 0.8rem;
       font-weight: 600;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
-      box-shadow: 0 10px 24px rgba(248, 180, 52, 0.45);
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+      transition: transform 0.2s ease;
     }
-    .btn-nav span:first-child {
-      font-size: 1rem;
+    .btn-nav:hover {
+      transform: translateY(-1px);
     }
     @media (max-width: 720px) {
       .nav-links { display: none; }
@@ -125,172 +128,192 @@
     /* hero */
     .hero {
       display: grid;
-      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.2fr);
-      gap: 2.5rem;
-      padding: 2.2rem 0 2.8rem;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 3rem;
+      padding: 4rem 0 5rem;
       align-items: center;
     }
     @media (max-width: 900px) {
       .hero {
         grid-template-columns: minmax(0, 1fr);
+        text-align: center;
+        padding: 3rem 0;
       }
+      .hero-subtitle { margin-left: auto; margin-right: auto; }
+      .hero-actions { justify-content: center; }
+      .hero-meta { justify-content: center; }
     }
     .hero-eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      padding: 0.2rem 0.7rem 0.2rem 0.25rem;
+      padding: 0.4rem 1rem;
       border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.6);
+      border: 1px solid var(--border);
       font-size: 0.75rem;
-      color: var(--text-muted);
-      background: radial-gradient(circle at top left, rgba(255, 179, 71, 0.25), rgba(15, 23, 42, 0.95));
-    }
-    .hero-dot {
-      width: 16px;
-      height: 16px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 30% 20%, #ffffff 0, #bbf7d0 25%, #22c55e 60%, #166534 90%);
-      box-shadow: 0 0 12px rgba(74, 222, 128, 0.9);
+      font-weight: 600;
+      color: var(--accent);
+      background: rgba(59, 130, 246, 0.1);
+      margin-bottom: 1.5rem;
     }
     .hero-title {
-      margin-top: 1rem;
-      font-size: clamp(2.1rem, 4vw, 2.8rem);
-      line-height: 1.15;
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      line-height: 1.1;
       letter-spacing: -0.04em;
-      font-weight: 700;
+      font-weight: 800;
+      margin: 0;
     }
     .hero-title span {
-      background: linear-gradient(90deg, #fbbf24, #fb923c, #f97316);
+      background: linear-gradient(90deg, var(--accent), var(--accent-creative));
       -webkit-background-clip: text;
       color: transparent;
     }
     .hero-subtitle {
-      margin-top: 0.8rem;
-      font-size: 0.95rem;
+      margin-top: 1.5rem;
+      font-size: 1.1rem;
+      line-height: 1.6;
       color: var(--text-muted);
-      max-width: 32rem;
+      max-width: 36rem;
     }
     .hero-actions {
-      margin-top: 1.4rem;
+      margin-top: 2.5rem;
       display: flex;
       flex-wrap: wrap;
-      gap: 0.75rem;
+      gap: 1rem;
     }
     .btn-primary,
     .btn-ghost {
       border-radius: 999px;
-      padding: 0.7rem 1.2rem;
-      font-size: 0.85rem;
+      padding: 0.8rem 1.75rem;
+      font-size: 0.9rem;
       border: none;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 0.45rem;
-      font-weight: 500;
+      gap: 0.5rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
     }
     .btn-primary {
-      background: linear-gradient(90deg, var(--accent), var(--accent-strong));
-      color: #111827;
+      background: linear-gradient(90deg, var(--accent), var(--accent-creative));
+      color: white;
+      box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px rgba(59, 130, 246, 0.3);
     }
     .btn-ghost {
-      background: transparent;
-      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
       color: var(--text-main);
     }
+    .btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
     .hero-meta {
-      margin-top: 1.3rem;
-      font-size: 0.8rem;
+      margin-top: 2rem;
+      font-size: 0.85rem;
       color: var(--text-muted);
       display: flex;
       flex-wrap: wrap;
-      gap: 1rem;
+      gap: 1.5rem;
     }
-    .hero-meta span:first-child {
+    .hero-meta div {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .hero-meta span {
       display: inline-block;
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: var(--accent);
-      margin-right: 0.3rem;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-creative);
+    }
+    .hero-visual {
+      position: relative;
     }
     .hero-card {
-      background: radial-gradient(circle at 0 0, rgba(248, 180, 52, 0.15), rgba(15, 23, 42, 0.98));
+      background: rgba(30, 41, 59, 0.7);
+      backdrop-filter: blur(12px);
       border-radius: var(--radius);
-      border: 1px solid rgba(148, 163, 184, 0.55);
-      padding: 1.25rem 1.1rem;
-      box-shadow: 0 18px 40px rgba(0,0,0,0.7);
-      font-size: 0.85rem;
+      border: 1px solid var(--border);
+      padding: 2rem;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
     }
     .hero-card h3 {
-      margin: 0 0 0.6rem;
-      font-size: 0.95rem;
+      margin: 0 0 1rem;
+      font-size: 1.1rem;
+      color: var(--accent);
     }
-    .hero-badges {
+    .tool-list {
       display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-      margin-top: 0.6rem;
+      flex-direction: column;
+      gap: 1rem;
     }
-    .chip {
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.6);
-      padding: 0.2rem 0.65rem;
-      font-size: 0.72rem;
-      color: var(--text-muted);
+    .tool-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.75rem;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .tool-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      background: rgba(59, 130, 246, 0.1);
+      color: var(--accent);
     }
 
     /* sections */
     section {
-      margin-bottom: 3rem;
+      margin-bottom: 6rem;
     }
     .section-header {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 1rem;
-      margin-bottom: 1.4rem;
+      margin-bottom: 3rem;
+      text-align: center;
     }
     .section-kicker {
-      font-size: 0.7rem;
-      letter-spacing: 0.16em;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--accent);
+      margin-bottom: 0.75rem;
+      display: block;
     }
     .section-title {
-      font-size: 1.35rem;
-      margin-top: 0.2rem;
+      font-size: 2.25rem;
+      font-weight: 800;
+      margin: 0;
+      letter-spacing: -0.02em;
     }
     .section-subtitle {
-      font-size: 0.85rem;
+      margin-top: 1rem;
+      font-size: 1.1rem;
       color: var(--text-muted);
-      max-width: 22rem;
-      text-align: right;
-    }
-    @media (max-width: 720px) {
-      .section-header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .section-subtitle {
-        text-align: left;
-      }
+      max-width: 32rem;
+      margin-left: auto;
+      margin-right: auto;
     }
 
-    /* cards grids */
+    /* tools grid */
     .grid-3 {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1rem;
+      gap: 1.5rem;
     }
     @media (max-width: 900px) {
       .grid-3 {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-    @media (max-width: 640px) {
-      .grid-3 {
-        grid-template-columns: minmax(0, 1fr);
+        grid-template-columns: repeat(1, minmax(0, 1fr));
       }
     }
 
@@ -298,165 +321,107 @@
       background: var(--card-bg);
       border-radius: var(--radius);
       border: 1px solid var(--border);
-      padding: 1rem 0.95rem 1.05rem;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.55);
-      font-size: 0.86rem;
+      padding: 2rem;
+      transition: all 0.3s ease;
       display: flex;
       flex-direction: column;
-      gap: 0.6rem;
+      height: 100%;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+    }
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(59, 130, 246, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
     }
     .card h3 {
-      margin: 0;
-      font-size: 0.95rem;
+      margin: 0 0 0.75rem;
+      font-size: 1.25rem;
+      font-weight: 700;
     }
     .card p {
-      margin: 0;
+      margin: 0 0 1.5rem;
       color: var(--text-muted);
+      line-height: 1.6;
+      flex-grow: 1;
     }
-
-    /* pricing cards */
-    .pricing-card {
-      position: relative;
-    }
-    .pricing-tier {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--text-muted);
-    }
-    .pricing-name {
+    .card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
       font-weight: 600;
-      margin-top: 0.2rem;
-    }
-    .pricing-tagline {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-    }
-    .pricing-price {
-      margin-top: 0.4rem;
-      font-size: 1.2rem;
-      font-weight: 600;
-    }
-    .pricing-price span {
-      font-size: 0.8rem;
-      font-weight: 400;
-      color: var(--text-muted);
-    }
-    .pricing-features {
-      list-style: none;
-      padding: 0.4rem 0 0;
-      margin: 0 0 0.9rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.3rem;
-      color: var(--text-muted);
-      font-size: 0.8rem;
-    }
-    .pricing-features li {
-      display: flex;
-      gap: 0.4rem;
-    }
-    .pricing-features li::before {
-      content: "•";
       color: var(--accent);
-      margin-top: 0.05rem;
-    }
-    .pricing-badge {
-      position: absolute;
-      top: 0.9rem;
-      right: 0.9rem;
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      padding: 0.15rem 0.5rem;
-      border-radius: 999px;
-      border: 1px solid rgba(248, 180, 52, 0.7);
-      background: rgba(248, 180, 52, 0.1);
-      color: var(--accent);
-    }
-    .pricing-actions {
-      margin-top: auto;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.45rem;
-    }
-
-    /* list cards */
-    .card ul {
-      margin: 0;
-      padding-left: 1rem;
-      color: var(--text-muted);
-    }
-    .card ul li {
-      margin-bottom: 0.25rem;
+      font-size: 0.9rem;
     }
 
     /* contact */
     .contact-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
-      gap: 1.6rem;
-      align-items: flex-start;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 3rem;
     }
     @media (max-width: 900px) {
       .contact-grid {
-        grid-template-columns: minmax(0, 1fr);
+        grid-template-columns: 1fr;
       }
+    }
+    .contact-info h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
     }
     .contact-form {
       display: flex;
       flex-direction: column;
-      gap: 0.7rem;
-      font-size: 0.85rem;
+      gap: 1.25rem;
     }
     .field {
       display: flex;
       flex-direction: column;
-      gap: 0.3rem;
+      gap: 0.5rem;
     }
     .field label {
-      font-size: 0.8rem;
-      color: var(--text-muted);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-main);
     }
     .field input,
     .field textarea,
     .field select {
-      border-radius: 10px;
-      border: 1px solid #1f2937;
-      background: #020617;
-      padding: 0.55rem 0.7rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: rgba(15, 23, 42, 0.5);
+      padding: 0.75rem 1rem;
       color: var(--text-main);
       font-family: inherit;
-      font-size: 0.85rem;
+      font-size: 0.95rem;
+      transition: border-color 0.2s;
+    }
+    .field input:focus,
+    .field textarea:focus {
+      outline: none;
+      border-color: var(--accent);
     }
     .field textarea {
-      resize: vertical;
-      min-height: 90px;
-      max-height: 200px;
-    }
-    .form-footnote {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-    }
-    .status-message {
-      font-size: 0.8rem;
-      min-height: 1.1em;
-      margin-top: 0.2rem;
-    }
-    .status-message.error {
-      color: #f97373;
-    }
-    .status-message.success {
-      color: #4ade80;
+      min-height: 120px;
     }
 
     footer {
-      border-top: 1px solid #111827;
-      padding: 1rem 1.25rem 1.4rem;
+      border-top: 1px solid var(--border);
+      padding: 3rem 1.25rem;
       text-align: center;
-      font-size: 0.78rem;
+      font-size: 0.9rem;
       color: var(--text-muted);
-      background: radial-gradient(circle at top, rgba(15, 23, 42, 0.95), #020617 55%);
+      background: #020617;
     }
   </style>
 </head>
@@ -467,16 +432,15 @@
         <div class="logo-badge"></div>
         <div>
           <div class="logo-title">MDU Tools</div>
-          <div class="logo-sub">Web &amp; Software Studio</div>
+          <div class="logo-sub">Intelligent Utilities</div>
         </div>
       </a>
       <div class="nav-links">
-        <a href="#packages" class="nav-link">Packages</a>
-        <a href="#pricing-menu" class="nav-link">Itemised pricing</a>
+        <a href="#tools" class="nav-link">Our Tools</a>
+        <a href="#about" class="nav-link">About</a>
         <a href="#contact" class="nav-link">Contact</a>
         <button class="btn-nav" type="button" data-scroll-to="#contact">
-          <span>●</span>
-          <span>Let's talk</span>
+          Get Started
         </button>
       </div>
     </nav>
@@ -488,264 +452,147 @@
       <section class="hero">
         <div>
           <div class="hero-eyebrow">
-            <div class="hero-dot"></div>
-            <span>Simple web builds with honest running costs.</span>
+            New Tools Now in Beta
           </div>
           <h1 class="hero-title">
-            Launch a site with <span>MDU Tools</span> and edit it yourself.
+            Empowering your workflow with <span>Intelligent Tools</span>.
           </h1>
           <p class="hero-subtitle">
-            Pick a template or go custom. Every package includes a website editor (CMS) so you can update content without
-            calling a developer each time.
+            We're building a suite of specialized utilities designed to solve modern web challenges. From content integrity to accessibility, we've got you covered.
           </p>
           <div class="hero-actions">
-            <button class="btn-primary" type="button" data-scroll-to="#packages">
-              View packages
-              <span>↗</span>
+            <button class="btn-primary" type="button" data-scroll-to="#tools">
+              Explore Tools
+              <span>↓</span>
             </button>
-            <button class="btn-ghost" type="button" data-scroll-to="#pricing-menu">
-              See itemised pricing
+            <button class="btn-ghost" type="button" data-scroll-to="#contact">
+              Contact Sales
             </button>
           </div>
           <div class="hero-meta">
-            <div><span></span>Template &amp; custom builds</div>
-            <div><span></span>Clear monthly support hours</div>
-            <div><span></span>Domains, hosting, DNS &amp; more</div>
+            <div><span></span>AI-Powered Insights</div>
+            <div><span></span>Enterprise Security</div>
+            <div><span></span>Seamless Integration</div>
           </div>
         </div>
-        <div>
+        <div class="hero-visual">
           <div class="hero-card">
-            <h3>6–day launch workflow</h3>
+            <h3>Featured Suite</h3>
+            <div class="tool-list">
+              <div class="tool-item">
+                <div class="tool-icon">🤖</div>
+                <div>
+                  <div style="font-weight: 600; font-size: 0.9rem;">AI Detector</div>
+                  <div style="font-size: 0.75rem; color: var(--text-muted);">Content Authenticity</div>
+                </div>
+              </div>
+              <div class="tool-item">
+                <div class="tool-icon">📋</div>
+                <div>
+                  <div style="font-weight: 600; font-size: 0.9rem;">Form Flow</div>
+                  <div style="font-size: 0.75rem; color: var(--text-muted);">Smart Data Collection</div>
+                </div>
+              </div>
+              <div class="tool-item">
+                <div class="tool-icon">♿</div>
+                <div>
+                  <div style="font-weight: 600; font-size: 0.9rem;">Accessibility Checker</div>
+                  <div style="font-size: 0.75rem; color: var(--text-muted);">Inclusive Web Design</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TOOLS -->
+      <section id="tools">
+        <div class="section-header">
+          <span class="section-kicker">Our Suite</span>
+          <h2 class="section-title">Powerful Utilities for Modern Teams</h2>
+          <p class="section-subtitle">
+            Specialized tools designed to enhance productivity, ensure compliance, and maintain content integrity.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <!-- AI Detector -->
+          <article class="card">
+            <div class="card-icon">🤖</div>
+            <h3>AI Detector</h3>
             <p>
-              Day 1: template or design · Day 2: revisions · Day 3: link front-end &amp; back-end · Day 4: testing ·
-              Day 5: hosting, domain &amp; go live · Day 6: post–deployment checks.
+              Verify the authenticity of your content. Our advanced algorithms detect AI-generated text with high precision, helping you maintain human-centric standards.
             </p>
-            <div class="hero-badges">
-              <span class="chip">Includes CMS/editor</span>
-              <span class="chip">Domain &amp; hosting help</span>
-              <span class="chip">Care plans from £20/month</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- PACKAGES -->
-      <section id="packages">
-        <div class="section-header">
-          <div>
-            <div class="section-kicker">Packages</div>
-            <h2 class="section-title">Three clear tiers, one simple process.</h2>
-          </div>
-          <p class="section-subtitle">
-            All packages include a website editor (CMS) so you can update your own pages. The difference is how custom
-            the build is and how much support is included each month.
-          </p>
-        </div>
-
-        <div class="grid-3">
-          <!-- Tier 1 -->
-          <article class="card pricing-card">
-            <div class="pricing-tier">Starter · Tier 1</div>
-            <div class="pricing-name">Template Site</div>
-            <p class="pricing-tagline">
-              Choose one of our templates and launch quickly with your content.
-            </p>
-            <div class="pricing-price">
-              £150 <span>/ one-off build</span>
-            </div>
-            <ul class="pricing-features">
-              <li>Up to 3 pages (for example: Home, About, Contact).</li>
-              <li>No custom build – you pick from our templates, we apply your logo, colours and basic layout.</li>
-              <li>Includes website editor / CMS so you can edit text and images yourself.</li>
-              <li>Domain connection, hosting setup, testing and go live.</li>
-              <li>Ongoing care: <strong>£20/month</strong> including <strong>1 hour</strong> of maintenance &amp; support.</li>
-            </ul>
-            <div class="pricing-actions">
-              <button class="btn-primary" type="button" data-scroll-to="#contact">Check if this fits</button>
-              <button class="btn-ghost" type="button" data-scroll-to="#pricing-menu">See itemised work</button>
-            </div>
+            <a href="#contact" class="card-link" data-scroll-to="#contact">Learn more ➝</a>
           </article>
 
-          <!-- Tier 2 -->
-          <article class="card pricing-card">
-            <div class="pricing-badge">Most popular</div>
-            <div class="pricing-tier">Professional · Tier 2</div>
-            <div class="pricing-name">Custom Build</div>
-            <p class="pricing-tagline">
-              A custom design built around your brand, still with a simple editor.
+          <!-- Form Flow -->
+          <article class="card">
+            <div class="card-icon">📋</div>
+            <h3>Form Flow</h3>
+            <p>
+              Streamline complex data collection. Build intelligent, multi-step forms that adapt to user input and maximize conversion rates without writing code.
             </p>
-            <div class="pricing-price">
-              £250 <span>/ one-off build</span>
-            </div>
-            <ul class="pricing-features">
-              <li>Custom design and layout, tailored to your brand and content.</li>
-              <li>Multi-page site (typically up to 6 pages) with more layout flexibility than templates.</li>
-              <li>Includes website editor / CMS so you can update pages yourself.</li>
-              <li>Forms, simple integrations, on-page SEO basics, SSL and analytics.</li>
-              <li>Ongoing care: <strong>£35/month</strong> including <strong>3 hours</strong> of maintenance &amp; support.</li>
-            </ul>
-            <div class="pricing-actions">
-              <button class="btn-primary" type="button" data-scroll-to="#contact">Book a discovery chat</button>
-              <button class="btn-ghost" type="button" data-scroll-to="#pricing-menu">See itemised work</button>
-            </div>
+            <a href="#contact" class="card-link" data-scroll-to="#contact">Explore features ➝</a>
           </article>
 
-          <!-- Tier 3 -->
-          <article class="card pricing-card">
-            <div class="pricing-tier">Enterprise · Tier 3</div>
-            <div class="pricing-name">MDU Lab</div>
-            <p class="pricing-tagline">
-              Custom, integration-heavy builds with more strategy and support.
+          <!-- Accessibility Checker -->
+          <article class="card">
+            <div class="card-icon">♿</div>
+            <h3>Accessibility Checker</h3>
+            <p>
+              Ensure your digital products are inclusive. Automatically audit your site for WCAG compliance and get actionable insights to fix barriers for all users.
             </p>
-            <div class="pricing-price">
-              From £1,200 <span>/ scoped per project</span>
-            </div>
-            <ul class="pricing-features">
-              <li>Fully custom UX, components and flows with deeper technical discovery.</li>
-              <li>Advanced integrations (CRM, bookings, payments, dashboards and more).</li>
-              <li>Advanced CMS/editor so your team can manage pages, posts and media.</li>
-              <li>Performance, security and analytics tuned around your KPIs.</li>
-              <li>Ongoing care: <strong>£65/month</strong> including <strong>6 hours</strong> of maintenance &amp; support.</li>
-            </ul>
-            <div class="pricing-actions">
-              <button class="btn-primary" type="button" data-scroll-to="#contact">Share your idea</button>
-              <button class="btn-ghost" type="button" data-scroll-to="#pricing-menu">See itemised work</button>
-            </div>
+            <a href="#contact" class="card-link" data-scroll-to="#contact">Get an audit ➝</a>
           </article>
         </div>
       </section>
 
-      <!-- ITEMISED PRICING -->
-      <section id="pricing-menu">
-        <div class="section-header">
+      <!-- ABOUT (Optional but adds to corporate feel) -->
+      <section id="about">
+        <div class="contact-grid" style="align-items: center;">
           <div>
-            <div class="section-kicker">A la carte</div>
-            <h2 class="section-title">Itemised pricing for individual jobs.</h2>
+            <span class="section-kicker">About MDU Tools</span>
+            <h2 class="section-title" style="text-align: left; margin-bottom: 1.5rem;">Built for the future of the web.</h2>
+            <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 1.5rem;">
+              MDU Tools started as a web studio, but we realized that modern teams need more than just a website—they need tools that help them navigate an increasingly complex digital landscape.
+            </p>
+            <p style="color: var(--text-muted); line-height: 1.8;">
+              Our mission is to create simple, powerful, and accessible utilities that empower developers, creators, and businesses to build a better web.
+            </p>
           </div>
-          <p class="section-subtitle">
-            Perfect when you already have hosting or a template and just need specific help like domains, DNS or content.
-          </p>
+          <div style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%); border-radius: var(--radius); padding: 3rem; border: 1px solid var(--border); text-align: center;">
+            <div style="font-size: 3rem; margin-bottom: 1rem;">🚀</div>
+            <h3 style="margin-bottom: 0.5rem;">Ready to scale?</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">Join 50+ teams using MDU Tools to power their digital presence.</p>
+            <button class="btn-primary" type="button" data-scroll-to="#contact">Get in touch</button>
+          </div>
         </div>
-
-        <div class="grid-3">
-          <article class="card">
-            <h3>Domains &amp; DNS</h3>
-            <ul>
-              <li>Domain registration (.com / .co.uk): <strong>£12–£20 / year</strong></li>
-              <li>Domain transfer: <strong>£20–£40</strong></li>
-              <li>DNS setup (A, CNAME, MX etc.): <strong>£25–£60</strong></li>
-            </ul>
-          </article>
-
-          <article class="card">
-            <h3>Hosting &amp; email</h3>
-            <ul>
-              <li>Hosting setup (on our or your host): <strong>£40–£100</strong></li>
-              <li>Email address setup (e.g. info@domain.com): <strong>£25–£60</strong></li>
-            </ul>
-          </article>
-
-          <article class="card">
-            <h3>Templates &amp; layout</h3>
-            <ul>
-              <li>Template installation only: <strong>£40–£80</strong></li>
-              <li>Template customisation: <strong>£80–£200</strong></li>
-              <li>Homepage design within a template: <strong>£100–£250</strong></li>
-              <li>Additional page layout: <strong>£40–£80 per page</strong></li>
-            </ul>
-          </article>
-
-          <article class="card">
-            <h3>Content &amp; pages</h3>
-            <ul>
-              <li>Content insertion (you provide text &amp; images): <strong>£20–£60 per page</strong></li>
-              <li>Light copy tweaks: <strong>£20–£50 per page</strong></li>
-              <li>Blog setup + first posts formatted: <strong>£80–£150</strong></li>
-            </ul>
-          </article>
-
-          <article class="card">
-            <h3>Forms &amp; integrations</h3>
-            <ul>
-              <li>Contact form setup &amp; testing: <strong>£30–£70</strong></li>
-              <li>Newsletter integration: <strong>£40–£100</strong></li>
-              <li>Basic booking / calendar integration: <strong>£70–£200</strong></li>
-              <li>Payment button / simple checkout: <strong>£60–£150</strong></li>
-            </ul>
-          </article>
-
-          <article class="card">
-            <h3>SEO, analytics &amp; care</h3>
-            <ul>
-              <li>Basic SEO setup (up to 5 pages): <strong>£60–£150</strong></li>
-              <li>Analytics setup: <strong>£30–£80</strong></li>
-              <li>Search Console + sitemap submit: <strong>£30–£70</strong></li>
-              <li>One-off small fix / update: <strong>£30–£80</strong></li>
-              <li>Monthly maintenance plan: <strong>£40–£150 / month</strong></li>
-            </ul>
-          </article>
-        </div>
-
-        <p style="font-size:0.8rem;color:var(--text-muted);margin-top:1.4rem;max-width:34rem;">
-          <strong>Example:</strong> if you already have hosting and a template and only need a domain, you might just pay
-          for domain registration (£12–£20) plus DNS/domain hookup to your host (£25–£60).
-        </p>
       </section>
 
       <!-- CONTACT -->
       <section id="contact">
         <div class="section-header">
-          <div>
-            <div class="section-kicker">Contact</div>
-            <h2 class="section-title">Tell us what you’re trying to ship.</h2>
-          </div>
+          <span class="section-kicker">Contact</span>
+          <h2 class="section-title">Get in touch with us.</h2>
           <p class="section-subtitle">
-            A short brief is plenty. We’ll reply with questions, options, and which tier looks best.
+            Whether you have a question about our tools or need a custom solution, we're here to help.
           </p>
         </div>
 
-        <div class="contact-grid">
-          <article class="card">
-            <h3>How it works</h3>
-            <ul>
-              <li>Share what you’re building and any deadlines.</li>
-              <li>We’ll respond with a short outline and suggested package.</li>
-              <li>If it’s a match, we lock a slot and start the 6–day workflow.</li>
-            </ul>
-          </article>
-
-          <article class="card">
-            <form class="contact-form" id="contactForm" novalidate>
-              <div class="field">
-                <label for="name">Name *</label>
-                <input id="name" name="name" type="text" placeholder="CMS-powered human" required />
-              </div>
-              <div class="field">
-                <label for="email">Email *</label>
-                <input id="email" name="email" type="email" placeholder="you@company.com" required />
-              </div>
-              <div class="field">
-                <label for="project">Project overview *</label>
-                <textarea id="project" name="project" placeholder="Tell us about the site, goals, and timelines…" required></textarea>
-              </div>
-              <div class="field">
-                <label for="tier">Which tier feels closest?</label>
-                <select id="tier" name="tier">
-                  <option value="">I'm not sure yet</option>
-                  <option value="Tier 1">Tier 1 – Template Site</option>
-                  <option value="Tier 2">Tier 2 – Custom Build</option>
-                  <option value="Tier 3">Tier 3 – MDU Lab</option>
-                </select>
-              </div>
-              <button class="btn-primary" type="submit">
-                Send a quick brief
-                <span>➝</span>
-              </button>
-              <p class="form-footnote">
-                This demo form doesn’t send anything yet – you can wire it up to your own backend or a form tool later.
-              </p>
-              <div class="status-message" id="formStatus" aria-live="polite"></div>
-            </form>
+        <div style="max-width: 600px; margin: 0 auto; text-align: center;">
+          <article class="card" style="padding: 3rem 2rem; align-items: center; gap: 1.5rem;">
+            <div class="card-icon" style="margin-bottom: 0;">✉️</div>
+            <div style="text-align: center;">
+              <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Email us directly</h3>
+              <p style="margin-bottom: 1.5rem;">For sales, technical support, or general inquiries, please reach out to our team at:</p>
+              <a href="mailto:info@mdulabs.com" style="font-size: 1.75rem; font-weight: 800; color: var(--accent); border-bottom: 2px solid rgba(59, 130, 246, 0.3); padding-bottom: 4px; transition: all 0.2s ease;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='rgba(59, 130, 246, 0.3)'">
+                info@mdulabs.com
+              </a>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 1rem;">
+              We typically respond within 24 hours on business days.
+            </p>
           </article>
         </div>
       </section>
@@ -753,7 +600,20 @@
   </main>
 
   <footer>
-    © <span id="year"></span> MDU Tools. Node/Express site deployed on Render.
+    <div class="wrap" style="padding: 0;">
+      <div style="margin-bottom: 2rem;">
+        <div class="logo" style="justify-content: center; margin-bottom: 1rem;">
+          <div class="logo-badge"></div>
+          <div class="logo-title" style="color: var(--text-main);">MDU Tools</div>
+        </div>
+        <p style="max-width: 20rem; margin: 0 auto; line-height: 1.6;">
+          Intelligent utilities for modern digital teams.
+        </p>
+      </div>
+      <div style="font-size: 0.8rem; color: var(--text-muted); border-top: 1px solid var(--border); padding-top: 2rem;">
+        © <span id="year"></span> MDU Tools. All rights reserved.
+      </div>
+    </div>
   </footer>
 
   <script>
