@@ -415,6 +415,64 @@
       min-height: 120px;
     }
 
+    /* animations */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-in {
+      animation: fadeInUp 0.6s ease forwards;
+    }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+
+    /* status badge */
+    .badge-status {
+      font-size: 0.65rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      background: rgba(59, 130, 246, 0.1);
+      color: var(--accent);
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-left: 0.5rem;
+    }
+
+    /* svg icons */
+    .icon-svg {
+      width: 24px;
+      height: 24px;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
+
+    .tool-link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: auto;
+      padding: 0.6rem 1rem;
+      border-radius: 8px;
+      background: rgba(59, 130, 246, 0.05);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    .tool-link-btn:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
+      transform: translateX(4px);
+    }
+
     footer {
       border-top: 1px solid var(--border);
       padding: 3rem 1.25rem;
@@ -449,25 +507,26 @@
   <main id="top">
     <div class="wrap">
       <!-- HERO -->
-      <section class="hero">
+      <section class="hero animate-in">
         <div>
           <div class="hero-eyebrow">
-            New Tools Now in Beta
+            <span>Enterprise Utilities Suite</span>
+            <span class="badge-status">Beta</span>
           </div>
           <h1 class="hero-title">
             Empowering your workflow with <span>Intelligent Tools</span>.
           </h1>
           <p class="hero-subtitle">
-            We're building a suite of specialized utilities designed to solve modern web challenges. From content integrity to accessibility, we've got you covered.
+            Specialized web utilities for modern digital teams. Build, audit, and authenticate content across the `mdutools` ecosystem.
           </p>
           <div class="hero-actions">
             <button class="btn-primary" type="button" data-scroll-to="#tools">
-              Explore Tools
+              Explore Suite
               <span>↓</span>
             </button>
-            <button class="btn-ghost" type="button" data-scroll-to="#contact">
+            <a href="mailto:info@mdulabs.com" class="btn-ghost">
               Contact Sales
-            </button>
+            </a>
           </div>
           <div class="hero-meta">
             <div><span></span>AI-Powered Insights</div>
@@ -475,31 +534,37 @@
             <div><span></span>Seamless Integration</div>
           </div>
         </div>
-        <div class="hero-visual">
+        <div class="hero-visual animate-in delay-1">
           <div class="hero-card">
             <h3>Featured Suite</h3>
             <div class="tool-list">
-              <div class="tool-item">
-                <div class="tool-icon">🤖</div>
+              <a href="https://ai-detector.mdutools.com" class="tool-item">
+                <div class="tool-icon">
+                  <svg class="icon-svg"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                </div>
                 <div>
                   <div style="font-weight: 600; font-size: 0.9rem;">AI Detector</div>
                   <div style="font-size: 0.75rem; color: var(--text-muted);">Content Authenticity</div>
                 </div>
-              </div>
-              <div class="tool-item">
-                <div class="tool-icon">📋</div>
+              </a>
+              <a href="https://formflow.mdutools.com" class="tool-item">
+                <div class="tool-icon">
+                  <svg class="icon-svg"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
+                </div>
                 <div>
                   <div style="font-weight: 600; font-size: 0.9rem;">Form Flow</div>
                   <div style="font-size: 0.75rem; color: var(--text-muted);">Smart Data Collection</div>
                 </div>
-              </div>
-              <div class="tool-item">
-                <div class="tool-icon">♿</div>
+              </a>
+              <a href="https://compliance.mdutools.com" class="tool-item">
+                <div class="tool-icon">
+                  <svg class="icon-svg"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v4"></path><path d="M12 16h.01"></path></svg>
+                </div>
                 <div>
                   <div style="font-weight: 600; font-size: 0.9rem;">Accessibility Checker</div>
                   <div style="font-size: 0.75rem; color: var(--text-muted);">Inclusive Web Design</div>
                 </div>
-              </div>
+              </a>
             </div>
           </div>
         </div>
@@ -507,43 +572,55 @@
 
       <!-- TOOLS -->
       <section id="tools">
-        <div class="section-header">
+        <div class="section-header animate-in">
           <span class="section-kicker">Our Suite</span>
           <h2 class="section-title">Powerful Utilities for Modern Teams</h2>
           <p class="section-subtitle">
-            Specialized tools designed to enhance productivity, ensure compliance, and maintain content integrity.
+            Direct access to our specialized tools. Each utility is hosted on its own dedicated subdomain for peak performance.
           </p>
         </div>
 
         <div class="grid-3">
           <!-- AI Detector -->
-          <article class="card">
-            <div class="card-icon">🤖</div>
-            <h3>AI Detector</h3>
+          <article class="card animate-in delay-1">
+            <div class="card-icon">
+              <svg class="icon-svg"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"></path><path d="M12 6a6 6 0 1 0 6 6 6 6 0 0 0-6-6zm0 10a4 4 0 1 1 4-4 4 4 0 0 1-4 4z"></path></svg>
+            </div>
+            <h3>AI Detector <span class="badge-status" style="vertical-align: middle;">Beta</span></h3>
             <p>
-              Verify the authenticity of your content. Our advanced algorithms detect AI-generated text with high precision, helping you maintain human-centric standards.
+              Verify the authenticity of your content. Detect AI-generated text with industry-leading precision and maintain human-centric standards.
             </p>
-            <a href="#contact" class="card-link" data-scroll-to="#contact">Learn more ➝</a>
+            <a href="https://ai-detector.mdutools.com" class="tool-link-btn">
+              Go to AI Detector <span>➝</span>
+            </a>
           </article>
 
           <!-- Form Flow -->
-          <article class="card">
-            <div class="card-icon">📋</div>
-            <h3>Form Flow</h3>
+          <article class="card animate-in delay-2">
+            <div class="card-icon">
+              <svg class="icon-svg"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+            </div>
+            <h3>Form Flow <span class="badge-status" style="vertical-align: middle;">Live</span></h3>
             <p>
-              Streamline complex data collection. Build intelligent, multi-step forms that adapt to user input and maximize conversion rates without writing code.
+              Build intelligent, multi-step forms that adapt to user input and maximize conversion rates without writing a single line of code.
             </p>
-            <a href="#contact" class="card-link" data-scroll-to="#contact">Explore features ➝</a>
+            <a href="https://formflow.mdutools.com" class="tool-link-btn">
+              Open Form Flow <span>➝</span>
+            </a>
           </article>
 
           <!-- Accessibility Checker -->
-          <article class="card">
-            <div class="card-icon">♿</div>
-            <h3>Accessibility Checker</h3>
+          <article class="card animate-in delay-3">
+            <div class="card-icon">
+              <svg class="icon-svg"><path d="M18 6L6 18M6 6l12 12"></path></svg>
+            </div>
+            <h3>Compliance Checker <span class="badge-status" style="vertical-align: middle;">Live</span></h3>
             <p>
-              Ensure your digital products are inclusive. Automatically audit your site for WCAG compliance and get actionable insights to fix barriers for all users.
+              Automatically audit your site for WCAG compliance. Get actionable insights and ensure your digital products are inclusive for all users.
             </p>
-            <a href="#contact" class="card-link" data-scroll-to="#contact">Get an audit ➝</a>
+            <a href="https://compliance.mdutools.com" class="tool-link-btn">
+              Check Compliance <span>➝</span>
+            </a>
           </article>
         </div>
       </section>
